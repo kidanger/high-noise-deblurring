@@ -47,6 +47,7 @@ References
 
 If you find this work useful, please consider citing it as:
 > Anger, Jérémy, Mauricio Delbracio, and Gabriele Facciolo. "Efficient Blind Deblurring under High Noise Levels.", Published at International Symposium on Image and Signal Processing and Analysis (ISPA 2019).
+
 Also available on [arxiv](https://arxiv.org/abs/1904.09154).
 
 This method is based on the L0 kernel estimation family of methods.
