@@ -1,0 +1,20 @@
+dist: bionic
+
+language: c
+
+addons:
+  apt:
+    packages:
+      - octave
+      - liboctave-dev
+
+matrix:
+  include:
+    - os: linux
+    - os: osx
+      osx_image: xcode11.2
+      before_install:
+        - brew install octave
+
+script:
+  - make -C contrib/octave clean test

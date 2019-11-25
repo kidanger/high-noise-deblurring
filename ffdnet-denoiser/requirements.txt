@@ -1,0 +1,7 @@
+opencv-python==3.4.1.15
+scikit-image==0.12.3
+torch==0.4.0
+torchvision==0.2.1
+h5py==2.7.0
+numpy==1.14.4
+
