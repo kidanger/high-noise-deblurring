@@ -15,7 +15,6 @@ import subprocess
 import math
 import logging
 import numpy as np
-import cv2
 import torch
 import torch.nn as nn
 from skimage.measure.simple_metrics import compare_psnr
