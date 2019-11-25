@@ -22,13 +22,16 @@ Compilation
 ===========
 
 This project requires some system libraries, such as `libtiff`, `libjpeg`, `libpng`, `libfftw3` and their respective headers. A recent C++ compiler, `make` and `cmake` are also required.
+The programs use [iio](https://github.com/mnhrdt/iio) to read and write images.
 
 To compile the C++ parts, use the following commands:
 ```bash
 $ make -C ponomarenko-noise-estimation/
 $ make -C kernel-estimation/
 $ cd nonblind-deconvolution/
-$ mkdir build; cmake ..
+$ mkdir build
+$ cd build
+$ cmake ..
 $ make
 ```
 
