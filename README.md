@@ -28,14 +28,13 @@ To compile the C++ parts, use the following commands:
 ```bash
 $ make -C ponomarenko-noise-estimation/
 $ make -C kernel-estimation/
-$ cd nonblind-deconvolution/
-$ mkdir build
-$ cd build
+$ mkdir nonblind-deconvolution/build
+$ cd nonblind-deconvolution/build
 $ cmake ..
 $ make
 ```
 
-For FFDNet, I recommend to use conda and install the dependencies as such:
+For FFDNet, you may use use conda and install the dependencies as such: (maybe)
 ```bash
 $ # optional: conda create -n <env> python=3
 $ conda activate <env>
