@@ -3,6 +3,7 @@ Usage
 =====
 
 Use the `run.sh` bash script to run the kernel estimation, denoising and deblurring.
+
 At the strict minimum, you can give it your image as the first argument and it will estimate the noise level and produce the result alongside of your image:
 ```bash
 $ bash run.sh example.png
@@ -10,6 +11,7 @@ $ bash run.sh example.png
 ```
 
 Other arguments (in order):
+
 2. kernel size. Should be an odd number. 35 by default.
 3. noise standard deviation. If left empty (using ""), the noise will be estimated using [Ponomarenko](https://www.ipol.im/pub/art/2013/45/).
 4. output estimated kernel file. Should be a tif file in order to preserve floating point values.
@@ -42,7 +44,7 @@ References
 ==========
 
 If you find this work useful, please consider citing it as:
-Anger, Jérémy, Mauricio Delbracio, and Gabriele Facciolo. "Efficient Blind Deblurring under High Noise Levels.", Published at International Symposium on Image and Signal Processing and Analysis (ISPA 2019).
+> Anger, Jérémy, Mauricio Delbracio, and Gabriele Facciolo. "Efficient Blind Deblurring under High Noise Levels.", Published at International Symposium on Image and Signal Processing and Analysis (ISPA 2019).
 Also available on [arxiv](https://arxiv.org/abs/1904.09154).
 
 This method is based on the L0 kernel estimation family of methods.
