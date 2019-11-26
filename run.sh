@@ -14,7 +14,7 @@ echo "Kernel size: $kernelsize"
 
 if [ -z "$sigma" ]; then
     echo "Noise level estimation..."
-    sigma=$(./ponomarenko-noise-estimation/ponomarenko -b 3 $blurry | tail -n 2 | head -n 1 | cut -d ' ' -f 7)
+    sigma=$(./ponomarenko-noise-estimation/ponomarenko -b 5 $blurry | tail -n 3 | head -n 1 | cut -d ' ' -f 7)
     echo "Estimated sigma: $sigma/255"
 else
     echo "User sigma: $sigma/255"
