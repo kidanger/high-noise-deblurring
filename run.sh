@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 set -e
 
 blurry=$1
@@ -14,7 +16,7 @@ echo "Kernel size: $kernelsize"
 
 if [ -z "$sigma" ]; then
     echo "Noise level estimation..."
-    sigma=$(./ponomarenko-noise-estimation/ponomarenko -b 5 $blurry | tail -n 3 | head -n 1 | cut -d ' ' -f 7)
+    sigma=$($DIR/ponomarenko-noise-estimation/ponomarenko -b 5 $blurry | tail -n 3 | head -n 1 | cut -d ' ' -f 7)
     echo "Estimated sigma: $sigma/255"
 else
     echo "User sigma: $sigma/255"
@@ -26,15 +28,15 @@ gamma=$(echo "200 * $sigma/255" | bc -l)
 echo "Kernel estimation..."
 echo " - set lambda-min to $lambda"
 echo " - set gamma to $gamma"
-./kernel-estimation/estimate-kernel $kernelsize $blurry $estimatedkernel --lambda-min $lambda --gamma $gamma
+$DIR/kernel-estimation/estimate-kernel $kernelsize $blurry $estimatedkernel --lambda-min $lambda --gamma $gamma
 echo "Estimated kernel: $estimatedkernel"
 
 echo "Denoising..."
-bash ffdnet-denoiser/run.sh $blurry $sigma $denoised
+bash $DIR/ffdnet-denoiser/run.sh $blurry $sigma $denoised
 echo "Denoised image: $denoised"
 
 lambda2=0.005
 echo "Non-blind deconvolution..."
-./nonblind-deconvolution/build/deblur $denoised $estimatedkernel $deblurred $lambda2
+$DIR/nonblind-deconvolution/build/deblur $denoised $estimatedkernel $deblurred $lambda2
 echo "Deblurring result: $deblurred"
 
