@@ -55,6 +55,7 @@ def test_ffdnet(**args):
 		imorig = imread(args['input'])
 		imorig = np.expand_dims(imorig, 0)
 	imorig = np.expand_dims(imorig, 0)
+	out_dtype = imorig.dtype
 
 	# Handle odd sizes
 	expanded_h = False
@@ -155,10 +156,6 @@ def test_ffdnet(**args):
 		logger.info("\tNo noise was added, cannot compute PSNR")
 	logger.info("\tRuntime {0:0.4f}s".format(stop_t-start_t))
 
-	# Compute difference
-	diffout   = 2*(outim - imorig) + .5
-	diffnoise = 2*(imnoisy-imorig) + .5
-
 	# Save images
 	# if not args['dont_save_results']:
 		# noisyimg = variable_to_cv2_image(imnoisy)
@@ -172,7 +169,7 @@ def test_ffdnet(**args):
 	# cv2.imwrite(args['output'], outimg)
 	outim = outim.data.cpu().numpy()[0]
 	outim = outim.transpose((1, 2, 0))
-	imsave(args['output'], outim)
+	imsave(args['output'], outim.astype(out_dtype))
 
 if __name__ == "__main__":
 	# Parse arguments

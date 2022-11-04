@@ -1,5 +1,5 @@
 numpy==1.14.4
-torch==0.4.0
 torchvision==0.2.1
 scikit-image==0.12.3
-
+-f https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==0.4.0
