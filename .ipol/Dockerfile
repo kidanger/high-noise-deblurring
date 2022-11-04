@@ -1,13 +1,11 @@
 FROM python:3.5
 
-RUN apt-get update && apt-get install -y build-essential libpng-dev libjpeg-dev libtiff-dev libeigen3-dev && rm -fr /var/cache/apt
+RUN apt-get update && apt-get install -y build-essential libpng-dev libjpeg-dev libtiff-dev libeigen3-dev cmake libfftw3-dev bc && rm -fr /var/cache/apt
 
 # copy the requirements.txt and install python packages
 COPY ffdnet-denoiser/requirements.txt requirements.txt
 #RUN pip3 install --no-cache-dir torch==0.4.0 -f https://download.pytorch.org/whl/cpu/torch_stable.html
 RUN pip3 install --no-cache-dir -r requirements.txt && rm requirements.txt
-
-RUN apt-get update && apt-get install -y cmake libfftw3-dev bc && rm -fr /var/cache/apt
 
 RUN wget -q https://www.ipol.im/pub/art/2018/211/imgutils-master.zip && unzip imgutils-master.zip && cd imgutils-master && cmake . && make -j
 RUN wget -q https://www.ipol.im/pub/art/2018/211/imscript.zip && unzip imscript.zip && make -C imscript-master -j
