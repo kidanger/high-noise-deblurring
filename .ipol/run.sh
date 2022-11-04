@@ -10,7 +10,7 @@ add_noise=$5
 sigma=$6
 
 cp $img noisy.png
-if [ "$add_noise" = "True" ]; then
+if [ "$add_noise" = "true" ]; then
 	echo Adding noise...
 	awgn $sigma noisy.png noisy.png
 fi
